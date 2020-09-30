@@ -9,6 +9,7 @@ let c = canvas.getContext('2d');
     function showScore(text) {
         c.beginPath();
         c.font = "30px Arial";
+        c.fillStyle = 'black'
         c.fillText(text,20,40);
         c.closePath();
     };
@@ -26,8 +27,8 @@ function Ball(x,y,radius,color,dx,dy){
     this.draw = function (){
         c.beginPath();
         c.arc(this.x,this.y,this.radius,0,2*Math.PI,false);
-        c.strokeStyle = this.color;
-        c.stroke();
+        c.fillStyle = this.color;
+        c.fill();
         c.closePath();
 
     }
@@ -46,15 +47,15 @@ function Ball(x,y,radius,color,dx,dy){
                 //thay doi goc
                 if(this.dx > 0){
                     if(mark === 1){
-                        this.dx+=1;
+                        this.dx+=2;
                     }else{
-                        this.dx-=1;
+                        this.dx-=2;
                     }
-                }else{
+                }else if (this.dx < 0){
                     if(mark === -1){
-                        this.dx-=1;
+                        this.dx-=2;
                     }else{
-                        this.dx+=1;
+                        this.dx+=2;
                     }
                 }
             }
@@ -79,8 +80,8 @@ function Bar(x,y,width,height,color){
 
     this.draw = function (){
         c.beginPath();
-        c.fillRect(this.x,this.y,this.width,this.height);
         c.fillStyle = this.color;
+        c.fillRect(this.x,this.y,this.width,this.height);
         c.fill();
         c.closePath();
     }
@@ -116,11 +117,12 @@ window.addEventListener('keyup',function (key){
     }
 });
 //object
-let b1 = new Ball(50,100,7,'black',3,4);
+let b1 = new Ball(50,100,7,'blue',3,4);
 let bar = new Bar(100,550,100,10,'red')
 //draw
 let score = 0;
 function animate(){
+    //khi thua
     if(b1.y > canvas.height){
         alert('you lose');
         let replay = confirm('ban co muon choi lai?');
@@ -131,6 +133,7 @@ function animate(){
             b1.dy = 4;
             bar.x = 100;
             bar.y = 550;
+            score = 0;
             requestAnimationFrame(animate);
             c.clearRect(0,0,canvas.width,canvas.height);
 
@@ -141,6 +144,7 @@ function animate(){
 
         return ;
     }
+    //loop
     requestAnimationFrame(animate);
     c.clearRect(0,0,canvas.width,canvas.height);
 
