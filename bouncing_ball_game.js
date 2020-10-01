@@ -1,5 +1,5 @@
 
-
+let music = document.getElementById("music");
 let canvas = document.querySelector('canvas');
 canvas.width = 500;
 canvas.height = 650;
@@ -44,6 +44,7 @@ function Ball(x,y,radius,color,dx,dy){
             if(this.y + this.radius >= bar.y && this.y + this.radius <= bar.y + bar.height){
                 this.dy = -this.dy;
                 score++;
+                music.play();
                 //thay doi goc
                 if(this.dx > 0){
                     if(mark === 1){
@@ -95,7 +96,7 @@ function Bar(x,y,width,height,color){
 };
 //addEventListener
 let mark = 0;
-window.addEventListener('keydown',function (event){
+document.addEventListener('keydown',function (event){
     switch (event.keyCode) {
         case 37:
             if(bar.x <= 0){}
