@@ -70,11 +70,13 @@ function Ball(x,y,radius,color,dx,dy){
                 }
             }
         }
+        //khi bong va cham ben canh thanh ngang
         if(this.y >= bar.y && this.y <= bar.y+bar.height){
             if(this.x+this.radius >= bar.x && this.x-this.radius<=bar.x){
                 this.dx = -this.dx;
             }
         }
+        //thay doi toa do qua bong
         this.x += this.dx;
         this.y += this.dy;
         this.draw();
@@ -103,14 +105,14 @@ document.addEventListener('keydown',function (event){
         case 37:
             if(bar.x <= 0){}
             else {
-                bar.x -= 10;
+                bar.x -= 20;
                 mark = -1;
             }
             break;
         case 39:
             if(bar.x+bar.width >= canvas.width){}
             else {
-                bar.x += 10;
+                bar.x += 20;
                 mark = 1;
             }
             break;
