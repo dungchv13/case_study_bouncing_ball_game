@@ -49,15 +49,22 @@ function Ball(x,y,radius,color,dx,dy){
                     if(mark === 1){
                         this.dx+=2;
                     }else{
-                        this.dx-=2;
+                        if(this.dx >= 4) {
+                            this.dx -= 2;
+
+                        }
                     }
                 }else if (this.dx < 0){
                     if(mark === -1){
                         this.dx-=2;
                     }else{
-                        this.dx+=2;
+                        if(this.dx <= -4) {
+                            this.dx += 2;
+
+                        }
                     }
                 }
+                this.dy -= 1;
             }
         }
         if(this.y >= bar.y && this.y <= bar.y+bar.height){
@@ -103,16 +110,6 @@ window.addEventListener('keydown',function (event){
                 bar.x += 10;
                 mark = 1;
             }
-            break;
-    }
-});
-window.addEventListener('keyup',function (key){
-    switch (key.keyCode) {
-        case 37:
-            mark = 0;
-            break;
-        case 39:
-            mark = 0;
             break;
     }
 });
