@@ -48,24 +48,26 @@ function Ball(x,y,radius,color,dx,dy){
                 //thay doi goc
                 if(this.dx > 0){
                     if(mark === 1){
-                        this.dx+=2;
+                        this.dx+=1;
                     }else{
                         if(this.dx >= 4) {
-                            this.dx -= 2;
+                            this.dx -= 1;
 
                         }
                     }
                 }else if (this.dx < 0){
                     if(mark === -1){
-                        this.dx-=2;
+                        this.dx-=1;
                     }else{
                         if(this.dx <= -4) {
-                            this.dx += 2;
+                            this.dx += 1;
 
                         }
                     }
                 }
-                this.dy -= 1;
+                if(this.dy >= -7) {
+                    this.dy -= 1;
+                }
             }
         }
         if(this.y >= bar.y && this.y <= bar.y+bar.height){
